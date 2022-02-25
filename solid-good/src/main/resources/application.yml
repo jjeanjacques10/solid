@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    url: jdbc:h2:mem:mydb
+  jpa:
+    defer-datasource-initialization: true
+    properties.hibernate.format_sql: true
+    generate-ddl: true
+    hibernate.ddl.auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties.hibernate.hbm2ddl.import_files: sql/populate-database.sql
