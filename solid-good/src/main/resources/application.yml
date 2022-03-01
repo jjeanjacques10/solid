@@ -1,4 +1,5 @@
 spring:
+  h2.console.enabled: true
   datasource:
     driver-class-name: org.h2.Driver
     username: sa
@@ -8,6 +9,6 @@ spring:
     defer-datasource-initialization: true
     properties.hibernate.format_sql: true
     generate-ddl: true
-    hibernate.ddl.auto: update
+    hibernate.ddl.auto: create
     database-platform: org.hibernate.dialect.H2Dialect
     properties.hibernate.hbm2ddl.import_files: sql/populate-database.sql
