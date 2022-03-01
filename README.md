@@ -1,4 +1,7 @@
-# SOLID Geek
+<div align="center">
+  <h1>SOLID Geek</h1>
+  <img src="/images/logo.png" width="600px">
+</div>
 
 Projeto desenvolvido para explicar os conceitos do SOLID e Orientação a Objetos. Neste repositório temos uma aplicação
 desenvolvida utilizando as melhores práticas ([solid-good](./solid-good)) e outra com exemplos de como não deve ser
@@ -21,7 +24,7 @@ feito ([solid-bad](./solid-bad)).
 ## Funcionalidades
 
 - Pokedex
-
+- Relatório
 
 ---
 Desenvolvido por [Jean J. Barros](https://github.com/jjeanjacques10/)
