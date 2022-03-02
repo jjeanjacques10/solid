@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "50c97683-5355-4cc7-b8c4-0c27af6aa462",
+		"name": "SOLID Pokemon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/report/2022/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"report",
+								"2022",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Catch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/report/catch",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"report",
+								"catch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pokedex/pokemon",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokedex",
+						"pokemon"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pikachu",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pokedex/pokemon?name=Pikachu",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokedex",
+						"pokemon"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pikachu"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vileplume\",\r\n    \"description\": \"Vileplume has the world’s largest petals. They are used to attract prey that are then doused with toxic spores. Once the prey are immobilized, this Pokémon catches and devours them.\",\r\n    \"hp\": 75,\r\n    \"attack\": 80,\r\n    \"defense\": 85,\r\n    \"speed\": 50,\r\n    \"total\": 50,\r\n    \"generation\": 45,\r\n    \"legendary\": 0,\r\n    \"imageUrl\": \"https://assets.pokemon.com/assets/cms2/img/pokedex/full/045.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/pokedex/pokemon",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokedex",
+						"pokemon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 45,\r\n    \"name\": \"Vileplume\",\r\n    \"description\": \"Vileplume has the world’s largest petals. They are used to attract prey that are then doused with toxic spores. Once the prey are immobilized, this Pokémon catches and devours them.\",\r\n    \"hp\": 75,\r\n    \"attack\": 80,\r\n    \"defense\": 85,\r\n    \"speed\": 50,\r\n    \"total\": 50,\r\n    \"generation\": 45,\r\n    \"legendary\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/pokedex/pokemon/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokedex",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

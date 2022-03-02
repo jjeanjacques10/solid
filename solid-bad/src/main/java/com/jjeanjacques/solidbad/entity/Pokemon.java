@@ -1,9 +1,11 @@
 package com.jjeanjacques.solidbad.entity;
 
+import com.jjeanjacques.solidbad.enums.TypePokemon;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -31,7 +33,13 @@ public class Pokemon implements Serializable {
     private int generation;
     private int legendary;
 
+    @Enumerated(EnumType.STRING)
+    private TypePokemon type;
+
     @Column(name = "image_url", columnDefinition = "TEXT")
     private String imageUrl;
+
+    @Column(name = "captured_at")
+    private LocalDateTime capturedAt;
 
 }

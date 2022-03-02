@@ -1,7 +1,6 @@
 package com.jjeanjacques.solidgood.service;
 
 import com.jjeanjacques.solidgood.controller.dto.PokemonDTO;
-import com.jjeanjacques.solidgood.entity.Pokemon;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

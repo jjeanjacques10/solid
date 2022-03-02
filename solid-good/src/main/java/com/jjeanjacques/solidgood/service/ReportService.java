@@ -1,11 +1,11 @@
 package com.jjeanjacques.solidgood.service;
 
-import org.springframework.stereotype.Service;
-
+import com.jjeanjacques.solidgood.controller.dto.ReportCatchDTO;
+import com.jjeanjacques.solidgood.controller.dto.ReportDTO;
 
 public interface ReportService {
 
-    void printReport();
-    void showCatch();
+    ReportDTO printReport(int month, int year) ;
+    ReportCatchDTO showCatch();
 
 }

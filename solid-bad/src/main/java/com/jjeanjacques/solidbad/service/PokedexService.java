@@ -1,6 +1,8 @@
 package com.jjeanjacques.solidbad.service;
 
 import com.jjeanjacques.solidbad.controller.dto.PokemonDTO;
+import com.jjeanjacques.solidbad.controller.dto.ReportCatchDTO;
+import com.jjeanjacques.solidbad.controller.dto.ReportDTO;
 import com.jjeanjacques.solidbad.entity.Pokemon;
 import com.jjeanjacques.solidbad.exception.NotFoundPokemon;
 import org.modelmapper.ModelMapper;
@@ -9,10 +11,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/* God Class */
 @Service
 public class PokedexService {
 
@@ -53,9 +57,23 @@ public class PokedexService {
         deleteById(id);
     }
 
-    public void printReport() {/*<code>*/}
+    public ReportDTO printReport() {
+        var pokemons = getAllPokemon();
+        return ReportDTO.builder()
+                .total(pokemons.size())
+                .power(pokemons.stream().mapToInt(PokemonDTO::getAttack).sum())
+                .createdAt(LocalDateTime.now())
+                .build();
+    }
 
-    public void showCatch() {/*<code>*/}
+    public ReportCatchDTO showCatch() {
+        var pokemons = getAllPokemon();
+        return ReportCatchDTO.builder()
+                .total(pokemons.size())
+                .pokemon(pokemons)
+                .createdAt(LocalDateTime.now())
+                .build();
+    }
 
     public List<Pokemon> findAll() {
         List<Pokemon> pokemons = new ArrayList<>();
@@ -115,10 +133,6 @@ public class PokedexService {
         return pokemon;
     }
 
-    void deleteById(Long id) {
-        delete(id);
-    }
-
     public Pokemon save(Pokemon pokemon) {/*<code>*/
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
             Class.forName("org.h2.Driver");
@@ -136,7 +150,7 @@ public class PokedexService {
         return null;
     }
 
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
             Class.forName("org.h2.Driver");
 
