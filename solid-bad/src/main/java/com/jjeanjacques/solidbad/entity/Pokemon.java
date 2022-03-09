@@ -42,4 +42,7 @@ public class Pokemon implements Serializable {
     @Column(name = "captured_at")
     private LocalDateTime capturedAt;
 
+    @Column(name = "last_workout")
+    private LocalDateTime lastWorkout;
+
 }

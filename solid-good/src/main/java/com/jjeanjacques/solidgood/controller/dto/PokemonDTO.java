@@ -26,12 +26,12 @@ public class PokemonDTO {
     private int defense;
     private int speed;
     private int total;
-    private int generation;
-    private int legendary;
     private TypePokemon type;
     @JsonProperty("image_url")
     private String imageUrl;
     @JsonProperty("captured_at")
     private LocalDateTime capturedAt;
+    @JsonProperty("last_workout")
+    private LocalDateTime lastWorkout;
 
 }

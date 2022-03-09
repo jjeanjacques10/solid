@@ -8,10 +8,13 @@ import com.jjeanjacques.solidbad.exception.NotFoundPokemon;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,6 +47,13 @@ public class PokedexService {
         var pokemon = findByNameContaining(name);
         if (pokemon == null)
             throw new NotFoundPokemon("Pokemon with name " + name + " not found");
+        return modelMapper.map(pokemon, PokemonDTO.class);
+    }
+
+    public PokemonDTO getPokemon(Long id) {
+        var pokemon = findById(id);
+        if (pokemon == null)
+            throw new NotFoundPokemon("Pokemon with id " + id + " not found");
         return modelMapper.map(pokemon, PokemonDTO.class);
     }
 
@@ -133,6 +143,41 @@ public class PokedexService {
         return pokemon;
     }
 
+    public Pokemon findById(Long id) {
+        Pokemon pokemon = null;
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+            var sql = "SELECT * FROM POKEMON WHERE id = " + id;
+
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            while (result.next()) {
+                LocalDateTime lastWorkout = null;
+                if (result.getDate("last_workout") != null) {
+                    lastWorkout = Instant.ofEpochMilli(result.getDate("last_workout").getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                }
+                pokemon = Pokemon.builder()
+                        .id(Long.valueOf(result.getInt("id")))
+                        .name(result.getString("name"))
+                        .description(result.getString("description"))
+                        .attack(result.getInt("attack"))
+                        .defense(result.getInt("defense"))
+                        .speed(result.getInt("speed"))
+                        .total(result.getInt("total"))
+                        .generation(result.getInt("generation"))
+                        .legendary(result.getInt("legendary"))
+                        .imageUrl(result.getString("image_url"))
+                        .lastWorkout(lastWorkout)
+                        .build();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pokemon;
+    }
+
     public Pokemon save(Pokemon pokemon) {/*<code>*/
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
             Class.forName("org.h2.Driver");
@@ -146,8 +191,27 @@ public class PokedexService {
         return findByNameContaining(pokemon.getName());
     }
 
-    public Pokemon update(Pokemon pokemon) {/*<code>*/
-        return null;
+    public Pokemon update(Pokemon pokemon) {
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+            Class.forName("org.h2.Driver");
+
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE POKEMON SET name = '" + pokemon.getName() + "', " +
+                    "description = '" + pokemon.getDescription() + "', " +
+                    "hp = " + pokemon.getHp() + ", " +
+                    "attack = " + pokemon.getAttack() + ", " +
+                    "defense = " + pokemon.getDefense() + ", " +
+                    "speed = " + pokemon.getSpeed() + ", " +
+                    "total = " + pokemon.getTotal() + ", " +
+                    "generation = " + pokemon.getGeneration() + ", " +
+                    "legendary = " + pokemon.getLegendary() + ", " +
+                    "image_url = '" + pokemon.getImageUrl() + "', " +
+                    "last_workout = '" + pokemon.getLastWorkout() + "'" +
+                    " WHERE id = " + pokemon.getId() + ";");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return findById(pokemon.getId());
     }
 
     public void deleteById(Long id) {

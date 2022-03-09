@@ -30,8 +30,6 @@ public class Pokemon implements Serializable {
     private int defense;
     private int speed;
     private int total;
-    private int generation;
-    private int legendary;
 
     @Enumerated(EnumType.STRING)
     private TypePokemon type;
@@ -41,5 +39,8 @@ public class Pokemon implements Serializable {
 
     @Column(name = "captured_at")
     private LocalDateTime capturedAt;
+
+    @Column(name = "last_workout")
+    private LocalDateTime lastWorkout;
 
 }

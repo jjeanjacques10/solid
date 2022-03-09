@@ -5,4 +5,5 @@ public class NotFoundPokemon extends RuntimeException {
     public NotFoundPokemon(String message) {
         super(message);
     }
+
 }

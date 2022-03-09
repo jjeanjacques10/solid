@@ -1,11 +1,13 @@
 package com.jjeanjacques.solidbad.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -25,5 +27,10 @@ public class PokemonDTO {
     private int total;
     private int generation;
     private int legendary;
+    @JsonProperty("image_url")
     private String imageUrl;
+    @JsonProperty("captured_at")
+    private LocalDateTime capturedAt;
+    @JsonProperty("last_workout")
+    private LocalDateTime lastWorkout;
 }

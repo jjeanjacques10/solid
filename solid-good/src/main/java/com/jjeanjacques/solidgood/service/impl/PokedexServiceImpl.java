@@ -43,6 +43,14 @@ public class PokedexServiceImpl implements PokedexService {
     }
 
     @Override
+    public PokemonDTO getPokemon(Long id) {
+        var pokemon = pokemonRepository.findById(id).get();
+        if (pokemon == null)
+            throw new NotFoundPokemon("Pokemon with id " + id + " not found");
+        return modelMapper.map(pokemon, PokemonDTO.class);
+    }
+
+    @Override
     @Transactional
     public Long addPokemon(PokemonDTO pokemonDTO) {
         var pokemon = modelMapper.map(pokemonDTO, Pokemon.class);
