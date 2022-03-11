@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class PokedexController {
 
     @Autowired
-    public PokedexService pokedexService;
+    private PokedexService pokedexService;
 
     @GetMapping("/pokemon")
     public ResponseEntity getAll(@RequestParam(required = false) String name) {

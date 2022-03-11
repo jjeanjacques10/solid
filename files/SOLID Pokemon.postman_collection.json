@@ -48,6 +48,83 @@
 			]
 		},
 		{
+			"name": "Training",
+			"item": [
+				{
+					"name": "Training Pokemon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"intension\": 100,\r\n    \"date\": \"2022-08-04T10:11:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/training/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"training",
+								"4"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Pikachu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Market",
+			"item": [
+				{
+					"name": "Buy/Sell Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"buy\",\r\n    \"item\": \"POKEBALL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/market",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"market"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Pikachu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Get All",
 			"request": {
 				"method": "GET",

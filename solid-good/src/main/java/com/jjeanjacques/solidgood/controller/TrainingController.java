@@ -31,12 +31,15 @@ public class TrainingController {
     @PostMapping("/{id}")
     public ResponseEntity<PokemonDTO> training(@PathVariable Long id,
                                                @RequestBody TrainingDTO trainingDTO) {
-        List<TrainingValidation> validations = List.of(new ValidateDateLastWorkout(), new ValidatePokemonPowerLimit());
-        this.trainingService = new TrainingServiceImpl(validations, new ModelMapper(), pokemonRepository);
-
+        setValidacoes();
         var pokemon = pokedexService.getPokemon(id);
         var pokemonTrained = trainingService.trainPokemon(pokemon, trainingDTO);
         return ResponseEntity.ok(pokemonTrained);
+    }
+
+    private void setValidacoes() {
+        List<TrainingValidation> validations = List.of(new ValidateDateLastWorkout(), new ValidatePokemonPowerLimit());
+        this.trainingService = new TrainingServiceImpl(validations, new ModelMapper(), pokemonRepository);
     }
 
 }

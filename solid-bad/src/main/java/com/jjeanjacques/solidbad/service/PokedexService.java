@@ -103,8 +103,6 @@ public class PokedexService {
                         .defense(result.getInt("defense"))
                         .speed(result.getInt("speed"))
                         .total(result.getInt("total"))
-                        .generation(result.getInt("generation"))
-                        .legendary(result.getInt("legendary"))
                         .imageUrl(result.getString("image_url"))
                         .build();
                 pokemons.add(pokemon);
@@ -132,8 +130,6 @@ public class PokedexService {
                         .defense(result.getInt("defense"))
                         .speed(result.getInt("speed"))
                         .total(result.getInt("total"))
-                        .generation(result.getInt("generation"))
-                        .legendary(result.getInt("legendary"))
                         .imageUrl(result.getString("image_url"))
                         .build();
             }
@@ -166,8 +162,6 @@ public class PokedexService {
                         .defense(result.getInt("defense"))
                         .speed(result.getInt("speed"))
                         .total(result.getInt("total"))
-                        .generation(result.getInt("generation"))
-                        .legendary(result.getInt("legendary"))
                         .imageUrl(result.getString("image_url"))
                         .lastWorkout(lastWorkout)
                         .build();
@@ -183,8 +177,8 @@ public class PokedexService {
             Class.forName("org.h2.Driver");
 
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO POKEMON (name, description, hp, attack, defense, speed, total, generation, legendary, image_url) " +
-                    "VALUES ('" + pokemon.getName() + "', '" + pokemon.getDescription() + "', " + pokemon.getHp() + ", " + pokemon.getAttack() + ", " + pokemon.getDefense() + ", " + pokemon.getSpeed() + ", " + pokemon.getTotal() + ", " + pokemon.getGeneration() + ", " + pokemon.getLegendary() + ", '" + pokemon.getImageUrl() + "');");
+            statement.execute("INSERT INTO POKEMON (name, description, hp, attack, defense, speed, total, image_url) " +
+                    "VALUES ('" + pokemon.getName() + "', '" + pokemon.getDescription() + "', " + pokemon.getHp() + ", " + pokemon.getAttack() + ", " + pokemon.getDefense() + ", " + pokemon.getSpeed() + ", " + pokemon.getTotal() + ", '" + pokemon.getImageUrl() + "');");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -203,8 +197,6 @@ public class PokedexService {
                     "defense = " + pokemon.getDefense() + ", " +
                     "speed = " + pokemon.getSpeed() + ", " +
                     "total = " + pokemon.getTotal() + ", " +
-                    "generation = " + pokemon.getGeneration() + ", " +
-                    "legendary = " + pokemon.getLegendary() + ", " +
                     "image_url = '" + pokemon.getImageUrl() + "', " +
                     "last_workout = '" + pokemon.getLastWorkout() + "'" +
                     " WHERE id = " + pokemon.getId() + ";");

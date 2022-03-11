@@ -30,8 +30,6 @@ public class Pokemon implements Serializable {
     private int defense;
     private int speed;
     private int total;
-    private int generation;
-    private int legendary;
 
     @Enumerated(EnumType.STRING)
     private TypePokemon type;
