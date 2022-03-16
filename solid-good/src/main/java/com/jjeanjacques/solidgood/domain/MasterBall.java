@@ -7,9 +7,14 @@ public class MasterBall extends ItemRare {
     public MasterBall(BigDecimal value, String location) {
         super(value, location);
     }
-    
+
     @Override
     public String sellItem() {
         return "You received $" + getValue() + ", it's a rare ball";
+    }
+
+    @Override
+    public String getLocation() {
+        return super.getLocation();
     }
 }

@@ -1,7 +1,12 @@
 package com.jjeanjacques.solidbad.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
+@Data
+@NoArgsConstructor
 public class Pokeball extends Item {
 
     public Pokeball(BigDecimal value) {

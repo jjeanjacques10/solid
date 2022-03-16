@@ -31,6 +31,13 @@ feito ([solid-bad](./solid-bad)).
 - Relatório
   - Geral
   - Pokemons Capturados
+- Loja
+  - Compra de Itens
+  - Venda de Itens
+- Treinamento
+  - Treino
+- Payment
+  - Fluxo de Pagamento de Pokeballs
 
 ## Artigo
 

@@ -1,6 +1,7 @@
 package com.jjeanjacques.solidgood.controller;
 
 import com.jjeanjacques.solidgood.controller.dto.ItemMarketDTO;
+import com.jjeanjacques.solidgood.controller.dto.ItemRareMarketDTO;
 import com.jjeanjacques.solidgood.service.MarketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,12 @@ public class MarketController {
         } else if ("sell".equalsIgnoreCase(itemMarketDTO.getAction())) {
             response = marketService.sell(itemMarketDTO.getItem());
         }
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/rare")
+    public ResponseEntity<String> sellRareItem(@RequestBody ItemRareMarketDTO itemRareMarketDTO) {
+        var response = marketService.sell(itemRareMarketDTO.getItem());
         return ResponseEntity.ok(response);
     }
 

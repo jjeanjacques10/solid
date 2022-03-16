@@ -125,6 +125,65 @@
 			]
 		},
 		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Wallet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"value\": 10\r\n        },\r\n        {\r\n            \"value\": 20\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/payment/wallet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payment",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Loan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"value\": 10\r\n        },\r\n        {\r\n            \"value\": 20\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/payment/loan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payment",
+								"loan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Get All",
 			"request": {
 				"method": "GET",
