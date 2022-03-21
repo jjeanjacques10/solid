@@ -9,6 +9,6 @@ public interface Payment {
     boolean status();
     List<Pokeball> getItems();
 
-    void intiateLoanSettlement(List<Pokeball> items);
+    void initiateLoanSettlement(List<Pokeball> items);
     List<Pokeball> initiateRePayment();
 }

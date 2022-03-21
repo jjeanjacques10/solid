@@ -13,9 +13,4 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
 
     Pokemon findByNameContaining(String name);
 
-    /*
-    Pokemon update();
-
-    void delete(Long id);*/
-
 }

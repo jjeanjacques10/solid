@@ -32,7 +32,7 @@ public class LoanService implements Payment {
     }
 
     @Override
-    public void intiateLoanSettlement(List<Pokeball> items) {
+    public void initiateLoanSettlement(List<Pokeball> items) {
         this.items.addAll(items);
     }
 

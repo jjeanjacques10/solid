@@ -24,7 +24,7 @@ public class PokedexServiceImpl implements PokedexService {
 
     @Override
     public void calculateTotalSum() {
-
+        // No Implemented
     }
 
     @Override

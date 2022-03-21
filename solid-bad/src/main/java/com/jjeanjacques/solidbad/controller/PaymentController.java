@@ -34,7 +34,7 @@ public class PaymentController {
     @PostMapping("/loan")
     public ResponseEntity<PaymentLoanResponseDTO> loan(@RequestBody PaymentDTO paymentDTO) {
         payment = new LoanService();
-        payment.intiateLoanSettlement(paymentDTO.getItems());
+        payment.initiateLoanSettlement(paymentDTO.getItems());
 
         var paymentResponse = PaymentLoanResponseDTO.builder()
                 .status(payment.status())

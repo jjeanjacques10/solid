@@ -33,7 +33,7 @@ public class WalletService implements Payment {
     }
 
     @Override
-    public void intiateLoanSettlement(List<Pokeball> items) {
+    public void initiateLoanSettlement(List<Pokeball> items) {
         throw new UnsupportedOperation("This is not a loan payment");
     }
 
