@@ -6,9 +6,7 @@ import com.jjeanjacques.solidbad.controller.dto.ReportDTO;
 import com.jjeanjacques.solidbad.entity.Pokemon;
 import com.jjeanjacques.solidbad.exception.NotFoundPokemon;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -23,17 +21,15 @@ import java.util.stream.Collectors;
 @Service
 public class PokedexService {
 
-    @Value("${spring.datasource.url}")
-    String DATABASE_URL;
-
-    @Value("${spring.datasource.username}")
-    String USER;
-
-    @Value("${spring.datasource.password}")
-    String PASSWORD;
-
-    @Autowired
     private ModelMapper modelMapper;
+    Connection connection;
+
+    public PokedexService(@Value("${spring.datasource.url}") String DATABASE_URL,
+                          @Value("${spring.datasource.username}") String USER,
+                          @Value("${spring.datasource.password}") String PASSWORD) throws SQLException {
+        modelMapper = new ModelMapper();
+        connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+    }
 
     public void calculateTotalSum() {/*<code>*/}
 
@@ -88,7 +84,7 @@ public class PokedexService {
     public List<Pokemon> findAll() {
         List<Pokemon> pokemons = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             var sql = "SELECT * FROM POKEMON";
 
             Statement statement = connection.createStatement();
@@ -115,7 +111,7 @@ public class PokedexService {
 
     public Pokemon findByNameContaining(String name) {
         Pokemon pokemon = null;
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             var sql = "SELECT * FROM POKEMON WHERE name LIKE '%" + name + "%'";
 
             Statement statement = connection.createStatement();
@@ -141,7 +137,7 @@ public class PokedexService {
 
     public Pokemon findById(Long id) {
         Pokemon pokemon = null;
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             var sql = "SELECT * FROM POKEMON WHERE id = " + id;
 
             Statement statement = connection.createStatement();
@@ -173,7 +169,7 @@ public class PokedexService {
     }
 
     public Pokemon save(Pokemon pokemon) {/*<code>*/
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             Class.forName("org.h2.Driver");
 
             Statement statement = connection.createStatement();
@@ -186,7 +182,7 @@ public class PokedexService {
     }
 
     public Pokemon update(Pokemon pokemon) {
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             Class.forName("org.h2.Driver");
 
             Statement statement = connection.createStatement();
@@ -207,7 +203,7 @@ public class PokedexService {
     }
 
     public void deleteById(Long id) {
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD)) {
+        try {
             Class.forName("org.h2.Driver");
 
             Statement statement = connection.createStatement();

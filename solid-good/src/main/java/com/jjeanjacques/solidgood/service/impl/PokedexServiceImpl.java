@@ -6,7 +6,6 @@ import com.jjeanjacques.solidgood.exception.NotFoundPokemon;
 import com.jjeanjacques.solidgood.repository.PokemonRepository;
 import com.jjeanjacques.solidgood.service.PokedexService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,15 +15,13 @@ import java.util.stream.Collectors;
 @Service
 public class PokedexServiceImpl implements PokedexService {
 
-    @Autowired
     private PokemonRepository pokemonRepository;
-
-    @Autowired
     private ModelMapper modelMapper;
 
-    @Override
-    public void calculateTotalSum() {
-        // No Implemented
+    public PokedexServiceImpl(PokemonRepository pokemonRepository,
+                              ModelMapper modelMapper) {
+        this.pokemonRepository = pokemonRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -64,5 +61,10 @@ public class PokedexServiceImpl implements PokedexService {
         if (pokemonRepository.existsById(id))
             throw new NotFoundPokemon("Pokemon with id " + id + " not found");
         pokemonRepository.deleteById(id);
+    }
+
+    @Override
+    public void calculateTotalSum() {
+        // No Implemented
     }
 }
