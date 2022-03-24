@@ -43,7 +43,7 @@ feito ([solid-bad](./solid-bad)). Apresentação realizada no TDC Connections 20
 
 Os princípios implementados neste projeto foram explicados no seguinte artigo:
 
-https://medium.com/@jjeanjacques10/tornando-seu-c%C3%B3digo-mais-solid-fabc10ce7ca3
+https://jjeanjacques10.medium.com/tornando-seu-c%C3%B3digo-mais-solid-fabc10ce7ca3
 
 ## Collections
 
