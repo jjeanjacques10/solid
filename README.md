@@ -5,7 +5,7 @@
 
 Projeto desenvolvido para explicar os conceitos do SOLID e Orientação a Objetos. Neste repositório temos uma aplicação
 desenvolvida utilizando as melhores práticas ([solid-good](./solid-good)) e outra com exemplos de como não deve ser
-feito ([solid-bad](./solid-bad)).
+feito ([solid-bad](./solid-bad)). Apresentação realizada no TDC Connections 2022!
 
 ``"A verdadeira prova de um bom código é o quão fácil é mudá-lo" - Martin Fowler ``
 
@@ -43,7 +43,7 @@ feito ([solid-bad](./solid-bad)).
 
 Os princípios implementados neste projeto foram explicados no seguinte artigo:
 
-**Medium Link**
+https://medium.com/@jjeanjacques10/tornando-seu-c%C3%B3digo-mais-solid-fabc10ce7ca3
 
 ## Collections
 
